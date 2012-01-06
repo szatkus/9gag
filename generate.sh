@@ -26,7 +26,7 @@ for gag in $results; do
 		col=$(expr $col + 1)
 	done
 	$SQL_CLIENT $DATABASE "UPDATE '9gag' SET Checked='True' WHERE Id=$id"
-	title=$(echo $title|sed "s/&/&amp;/g")
+	title=$(echo $title|sed "s/& /and /g")
 	echo "<title>$title</title>"
 	echo "<url>$url</url>"
 	echo "<id>$id</id>"
