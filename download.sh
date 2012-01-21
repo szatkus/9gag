@@ -1,6 +1,6 @@
 #/bin/sh
 TYPE="trending"
-PHPSESSID="nc459fp79o9j7ql9auf9ib8ac0"
+PHPSESSID="167393tadmcfb2kdb0qisits15"
 
 for i in $(seq $1 $2); do
 	echo $i
