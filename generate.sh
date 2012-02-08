@@ -7,6 +7,7 @@ results=$($SQL_CLIENT $DATABASE "SELECT Id, Url, Title from '9gag' WHERE Checked
 echo '<?xml version="1.0" encoding="UTF-8"?>'
 echo '<?xml-stylesheet type="text/xsl" href="9gag.xsl"?>'
 echo '<gags>'
+VALUES="0"
 IFS='
 '
 for gag in $results; do
@@ -25,7 +26,7 @@ for gag in $results; do
 		esac
 		col=$(expr $col + 1)
 	done
-	$SQL_CLIENT $DATABASE "UPDATE '9gag' SET Checked='True' WHERE Id=$id"
+	VALUES="$VALUES,$id"
 	title=$(echo $title|sed "s/& /and /g")
 	echo "<title>$title</title>"
 	echo "<url>$url</url>"
@@ -33,3 +34,4 @@ for gag in $results; do
 	echo '</gag>'
 done
 echo '</gags>'
+$SQL_CLIENT $DATABASE "UPDATE '9gag' SET Checked='True' WHERE Id in ($VALUES)"
