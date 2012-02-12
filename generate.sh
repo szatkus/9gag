@@ -27,7 +27,7 @@ for gag in $results; do
 		col=$(expr $col + 1)
 	done
 	VALUES="$VALUES,$id"
-	title=$(echo $title|sed "s/& /and /g")
+	title=$(echo $title|sed "s/&/&amp;/g")
 	echo "<title>$title</title>"
 	echo "<url>$url</url>"
 	echo "<id>$id</id>"
